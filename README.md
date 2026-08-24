@@ -4,10 +4,10 @@ Aplicação web estática para gerar e copiar assinaturas de e-mail da Secretari
 
 ## Como executar
 
-Abra `gerador-assinatura-email.html` diretamente no navegador ou sirva a pasta pelo Apache/XAMPP:
+Abra `index.html` diretamente no navegador ou sirva a pasta pelo Apache/XAMPP:
 
 ```text
-http://localhost/gerador-assinatura-email/gerador-assinatura-email.html
+http://localhost/gerador-assinatura-email/
 ```
 
 Preencha os dados, escolha a unidade e o cargo, clique em **Gerar assinatura** e depois em **Copiar assinatura**. A cópia preserva o HTML necessário para colar em um cliente de e-mail.
@@ -19,9 +19,13 @@ gerador-assinatura-email/
 |-- assets/
 |   |-- css/
 |   |   `-- styles.css          # Aparência da página e responsividade
+|   |-- js/
+|   |   |-- locations.js       # Locais, setores, endereços e CEPs
+|   |   `-- roles.js           # Cargos disponíveis no formulário
 |   `-- images/
-|       `-- background.png      # Imagem de fundo usada pelo CSS
-|-- gerador-assinatura-email.html # Interface, dados e comportamento
+|       |-- background.png               # Imagem de fundo usada pelo CSS
+|       `-- signature-logo-official.png  # Fonte do logotipo oficial incorporado
+|-- index.html                    # Interface, dados e comportamento
 `-- README.md
 ```
 
@@ -40,7 +44,9 @@ A imagem de fundo, antes incorporada ao CSS em Base64, fica em `assets/images/ba
 ## Manutenção
 
 - Altere somente `assets/css/styles.css` para mudar a aparência da página.
-- Os dados de locais e cargos permanecem nas constantes `locations` e `roles` dentro do HTML.
+- Edite `assets/js/locations.js` para adicionar ou alterar locais, unidades, setores, endereços e CEPs.
+- Edite `assets/js/roles.js` para adicionar, alterar ou remover cargos.
+- Mantenha as chaves e os textos entre aspas, separe cada item com vírgula e preserve os colchetes ou chaves que delimitam as listas.
 - Os estilos inline usados no HTML da assinatura gerada são intencionais. Muitos clientes de e-mail removem folhas de estilo externas, portanto esses estilos não devem ser transferidos para `styles.css`.
 - As imagens da marca e da assinatura continuam incorporadas em Base64 no HTML para que a assinatura copiada seja autocontida.
 - Preserve os IDs dos campos ao alterar a marcação, pois o JavaScript os utiliza para localizar os elementos.
